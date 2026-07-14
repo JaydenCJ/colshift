@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="620" viewBox="0 0 920 620" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="14">
+  <!-- Terminal transcript of a real colshift session on the generated demo
+       pair (examples/make_snapshots.py). Text content is copied verbatim
+       from an actual execution; see examples/drift_demo.sh. -->
+  <rect width="920" height="620" rx="10" fill="#0d1117"/>
+  <rect width="920" height="34" rx="10" fill="#161b22"/>
+  <rect y="20" width="920" height="14" fill="#161b22"/>
+  <circle cx="22" cy="17" r="6" fill="#ff5f57"/>
+  <circle cx="42" cy="17" r="6" fill="#febc2e"/>
+  <circle cx="62" cy="17" r="6" fill="#28c840"/>
+  <text x="460" y="22" fill="#8b949e" text-anchor="middle" font-size="12">colshift — did the data change under my model?</text>
+  <g fill="#c9d1d9">
+    <text x="24" y="62"><tspan fill="#7ee787">$</tspan> colshift compare demo/baseline.csv demo/current.csv --exclude loan_id</text>
+    <text x="24" y="94">baseline demo/baseline.csv (400 rows) -&gt; current demo/current.csv (450 rows)</text>
+    <text x="24" y="122">Verdict: <tspan fill="#f85149" font-weight="bold">ALERT</tspan> — 3 alert, 2 warn, 2 ok across 7 compared columns.</text>
+    <text x="24" y="158" fill="#8b949e">Column         Type         PSI    Nulls           Verdict  Notes</text>
+    <text x="24" y="182">amount         numeric      <tspan fill="#f85149">0.490</tspan>  0.0% -&gt; 0.0%    <tspan fill="#f85149">ALERT</tspan>    range widened high</text>
+    <text x="24" y="206">interest_rate  numeric      <tspan fill="#d29922">0.234</tspan>  0.0% -&gt; 0.0%    <tspan fill="#d29922">WARN</tspan>     range widened high</text>
+    <text x="24" y="230">term_months    numeric      0.022  0.0% -&gt; 0.0%    <tspan fill="#7ee787">OK</tspan></text>
+    <text x="24" y="254">region         categorical  <tspan fill="#f85149">0.357</tspan>  0.0% -&gt; 0.0%    <tspan fill="#f85149">ALERT</tspan>    new categories: offshore (15)</text>
+    <text x="24" y="278">channel        categorical  0.007  0.0% -&gt; 0.0%    <tspan fill="#7ee787">OK</tspan></text>
+    <text x="24" y="302">income         numeric      0.055  2.0% -&gt; <tspan fill="#f85149">17.8%</tspan>   <tspan fill="#f85149">ALERT</tspan>    null rate 2.0% -&gt; 17.8%</text>
+    <text x="24" y="326">credit_score   numeric      <tspan fill="#d29922">0.237</tspan>  0.0% -&gt; 0.0%    <tspan fill="#d29922">WARN</tspan>     range widened low: min 543 -&gt; 370</text>
+    <text x="24" y="362">Schema changes:</text>
+    <text x="24" y="386">  - added in current: <tspan fill="#7ee787">device</tspan> (categorical)</text>
+    <text x="24" y="410">  - removed from baseline: <tspan fill="#f85149">promo_code</tspan> (categorical)</text>
+    <text x="24" y="446">amount — top contributing buckets:</text>
+    <text x="24" y="470" fill="#8b949e">  &gt; 18,459.924         40 (10.0%) -&gt; 130 (28.9%)   PSI part 0.200</text>
+    <text x="24" y="494" fill="#8b949e">  5,197.352 - 6,330.336 40 (10.0%) -&gt;   8 (1.8%)    PSI part 0.142</text>
+    <text x="24" y="530"><tspan fill="#7ee787">$</tspan> echo $?</text>
+    <text x="24" y="554"><tspan fill="#f85149">1</tspan>  <tspan fill="#8b949e"># drift at alert level — gate your pipeline on it</tspan></text>
+    <text x="24" y="590"><tspan fill="#7ee787">$</tspan> colshift profile demo/baseline.csv -o baseline-profile.json  <tspan fill="#8b949e"># commit the profile, not the data</tspan></text>
+  </g>
+</svg>
