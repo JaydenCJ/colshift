@@ -9,7 +9,7 @@ description = "Per-column distribution drift between two dataset snapshots: PSI,
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
-authors = [{ name = "JaydenCJ" }]
+authors = [{ name = "JaydenCJ", email = "aisingioro.kiyon@gmail.com" }]
 keywords = ["data-drift", "psi", "data-quality", "csv", "monitoring", "ml-ops", "dataset", "cli"]
 classifiers = [
     "Development Status :: 3 - Alpha",
